@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PakUni — Find Your Best University</title>
+<style>
+:root{--blue:#2563eb;--teal:#0f9f8a;--yellow:#f5b942;--ink:#172033;--muted:#667085;--bg:#f7f9fc;--card:#fff;--line:#e5eaf1;--soft:#edf5ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+.nav{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:30}.brand{font-size:25px;font-weight:950;letter-spacing:-1px}.brand span{color:var(--blue)}.links{display:flex;gap:25px;font-size:13px;font-weight:800;color:#667085}.links a:hover{color:var(--blue)}.navbtn{background:var(--blue);color:#fff;padding:11px 16px;border-radius:10px;font-weight:900}
+.hero{padding:72px 6% 125px;background:linear-gradient(135deg,#eff6ff 0%,#f8fbff 55%,#effcf8 100%)}.hero-inner{max-width:1120px;margin:auto}.pill{display:inline-block;background:#fff;border:1px solid #dce8ff;color:var(--blue);padding:8px 12px;border-radius:99px;font-size:10px;font-weight:950;letter-spacing:.7px}.hero h1{font-size:clamp(43px,6vw,70px);line-height:1;letter-spacing:-3px;max-width:800px;margin:20px 0 15px}.hero h1 span{color:var(--blue)}.hero p{max-width:670px;color:#596579;font-size:18px;line-height:1.7}.hero-actions{display:flex;gap:10px;margin-top:25px}.hero-actions a{padding:14px 18px;border-radius:11px;font-weight:900}.primary{background:var(--blue);color:#fff;box-shadow:0 10px 24px #2563eb2b}.secondary{background:#fff;border:1px solid var(--line)}.hero-note{display:flex;gap:28px;flex-wrap:wrap;margin-top:31px}.hero-note strong{display:block;font-size:20px}.hero-note small{color:#7a8495}
+.shell{max-width:1120px;margin:-55px auto 85px;padding:0 20px}.finder{background:#fff;border:1px solid var(--line);border-radius:24px;padding:29px;box-shadow:0 25px 70px #23395d12}.finder h2{margin:0;font-size:29px}.muted{color:var(--muted);line-height:1.65}.progress{display:flex;gap:7px;margin:20px 0}.progress span{padding:7px 10px;background:#f0f3f7;color:#7a8495;border-radius:99px;font-size:10px;font-weight:900}.progress span.active{background:#eaf2ff;color:var(--blue)}
+.status{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}.choice{border:1px solid var(--line);background:#fff;border-radius:15px;padding:16px;text-align:left}.choice:hover{border-color:#9ab8f8}.choice.active{border:2px solid var(--blue);background:#f4f8ff}.choice b{display:block}.choice small{display:block;color:var(--muted);margin-top:4px}.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.awaiting{display:none}.show{display:block}label{display:block;font-size:10px;font-weight:950;color:#596579;letter-spacing:.4px}input,select{width:100%;margin-top:7px;padding:13px;border:1px solid #d8dee8;border-radius:10px;outline:none;background:#fff}input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb12}.full{grid-column:span 3}.section-title{font-size:12px;font-weight:950;color:var(--blue);margin:17px 0 9px}.go{width:100%;margin-top:19px;border:0;background:linear-gradient(135deg,var(--blue),#3888f7);color:#fff;border-radius:11px;padding:15px;font-weight:950}
+.results{display:none;margin-top:22px}.result{background:#fff;border:1px solid var(--line);border-radius:17px;padding:20px;margin:11px 0}.rhead{display:flex;justify-content:space-between;gap:15px}.rname{font-size:19px;font-weight:950}.score{font-size:24px;color:var(--blue);font-weight:950}.sub{font-size:12px;color:var(--muted)}.badge{display:inline-block;background:#edf5ff;color:var(--blue);padding:6px 8px;border-radius:99px;font-size:10px;font-weight:900;margin:6px 4px 0 0}.actions{display:flex;gap:8px;margin-top:13px}.small{background:#fff;border:1px solid #d5dce7;border-radius:9px;padding:9px 11px;font-size:11px;font-weight:900}.small:hover{border-color:var(--blue);color:var(--blue)}.notice{background:#fff9e8;border:1px solid #ead9a5;padding:14px;border-radius:12px;color:#6b5727;font-size:12px;line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:21px}.card .icon{font-size:25px}.card h3{margin:9px 0 5px}.cities{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:18px}.city{background:#fff;border:1px solid var(--line);padding:14px;border-radius:12px}.city b{display:block}.city small{color:var(--muted)}
+.footer{background:#172033;color:#fff;text-align:center;padding:48px 6%}.footer p{color:#aeb8c9}
+@media(max-width:850px){.links{display:none}.fields,.cards{grid-template-columns:1fr}.full{grid-column:auto}.cities{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:550px){.hero{padding-top:50px}.hero h1{letter-spacing:-2px}.finder{padding:20px}.status{grid-template-columns:1fr}.cities{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="brand">Pak<span>Uni</span></div><div class="links"><a href="#finder">Find a University</a><a href="#how">How it works</a><a href="#cities">Cities</a></div><a class="navbtn" href="#finder">Get Started</a></nav>
+
+<section class="hero"><div class="hero-inner">
+<div class="pill">MADE FOR STUDENTS IN PAKISTAN 🇵🇰</div>
+<h1>Finding your university shouldn't be <span>this hard.</span></h1>
+<p>Tell PakUni about your marks, your degree, your city and your budget. We'll help you discover options that make sense for you.</p>
+<div class="hero-actions"><a class="primary" href="#finder">Find My Universities →</a><a class="secondary" href="#how">How does it work?</a></div>
+<div class="hero-note"><div><strong>Simple</strong><small>student-first questions</small></div><div><strong>Flexible</strong><small>awaiting Part-II supported</small></div><div><strong>Smart</strong><small>personalized shortlist</small></div></div>
+</div></section>
+
+<main class="shell">
+<section id="finder" class="finder">
+<h2>First, tell us about yourself</h2>
+<p class="muted">Don't worry — you don't need to know your final result yet.</p>
+<div class="progress"><span class="active">1. Academic status</span><span>2. Preferences</span><span>3. Your matches</span></div>
+
+<div class="section-title">WHAT IS YOUR HSSC STATUS?</div>
+<div class="status">
+<button id="awaitChoice" class="choice active" onclick="setStatus('awaiting')"><b>⏳ I'm awaiting HSSC Part-II</b><small>My final result isn't available yet.</small></button>
+<button id="finalChoice" class="choice" onclick="setStatus('final')"><b>✓ I have my final HSSC result</b><small>My Part-II result is available.</small></button>
+</div>
+
+<div class="section-title">YOUR ACADEMIC MARKS</div>
+<div class="fields">
+<div><label>SSC / MATRIC — OBTAINED</label><input id="so" type="number" placeholder="e.g. 880"></div>
+<div><label>SSC / MATRIC — TOTAL</label><input id="st" type="number" value="1100"></div>
+<div></div>
+<div><label>HSSC PART-I — OBTAINED</label><input id="h1o" type="number" placeholder="e.g. 395"></div>
+<div><label>HSSC PART-I — TOTAL</label><input id="h1t" type="number" value="510"></div>
+<div></div>
+<div id="finalFields" class="awaiting full">
+<div><label>HSSC PART-II / FINAL — OBTAINED</label><input id="hfo" type="number" placeholder="e.g. 505"></div>
+<div style="margin-top:12px"><label>HSSC FINAL — TOTAL</label><input id="hft" type="number" value="1100"></div>
+</div>
+<div id="awaitMsg" class="full" style="background:#effcf8;border:1px solid #cbeee4;border-radius:13px;padding:14px;color:#287563;font-size:12px"><b>You're good.</b> Since you're awaiting Part-II, PakUni will not invent a final aggregate. We'll show an estimated profile using your available marks and clearly label it as provisional.</div>
+
+<div><label>DEGREE YOU WANT</label><select id="field"><option value="cs">Computer Science</option><option value="se">Software Engineering</option><option value="ai">Artificial Intelligence</option><option value="ds">Data Science</option><option value="it">Information Technology</option><option value="cyber">Cyber Security</option><option value="business">Business / Management</option><option value="eng">Engineering</option><option value="arts">Arts / Social Sciences</option></select></div>
+<div><label>PREFERRED CITY</label><select id="city"><option value="any">Anywhere in Pakistan</option><option>Islamabad</option><option>Rawalpindi</option><option>Lahore</option><option>Bahawalpur</option><option>Multan</option><option>Faisalabad</option><option>Gujranwala</option><option>Sargodha</option><option>Karachi</option><option>Hyderabad</option><option>Sukkur</option><option>Peshawar</option><option>Abbottabad</option><option>Quetta</option><option>Gwadar</option><option>Gilgit</option><option>Skardu</option><option>Muzaffarabad</option><option>Mirpur</option></select></div>
+<div><label>MAX BUDGET / SEMESTER</label><input id="budget" type="number" placeholder="e.g. 150000"></div>
+<div><label>ENTRY TEST</label><select id="test"><option value="any">Any route</option><option value="no">Prefer no university test</option><option value="yes">Willing to take a test</option></select></div>
+<div><label>WHAT MATTERS MOST?</label><select id="priority"><option value="balanced">A bit of everything</option><option value="budget">Affordable fees</option><option value="career">Career / reputation</option><option value="location">Near my city</option><option value="admission">Easier admission route</option></select></div>
+<div class="full"><label>OPTIONAL — TELL US YOUR GOAL</label><input id="goal" placeholder="Example: I want BSCS, affordable fees and a university near Bahawalpur"></div>
+</div>
+<button class="go" onclick="recommend()">Show Universities For Me →</button>
+</section>
+
+<section id="results" class="finder results">
+<h2 style="margin:0">Here are your options</h2><p id="summary" class="muted"></p><div id="list"></div>
+<div class="notice"><b>Remember:</b> PakUni is a guidance tool. Merit, fees, eligibility, deadlines and entry-test rules can change. Verify current details from the university before applying.</div>
+</section>
+
+<section id="how" style="margin-top:70px"><h2>How PakUni works</h2><p class="muted">No complicated admission jargon. Just three simple steps.</p>
+<div class="cards"><div class="card"><div class="icon">📝</div><h3>Tell us about you</h3><p class="muted">Enter your marks and tell us whether you're awaiting Part-II.</p></div><div class="card"><div class="icon">🎯</div><h3>Tell us what you want</h3><p class="muted">Choose your degree, city, budget and priorities.</p></div><div class="card"><div class="icon">🏫</div><h3>Explore your matches</h3><p class="muted">See universities that fit your profile and compare your shortlist.</p></div></div></section>
+
+<section id="cities" style="margin-top:70px"><h2>Explore universities by city</h2><p class="muted">Start local or explore the whole country.</p>
+<div class="cities"><div class="city"><b>Islamabad</b><small>Capital Region</small></div><div class="city"><b>Rawalpindi</b><small>Punjab</small></div><div class="city"><b>Lahore</b><small>Punjab</small></div><div class="city"><b>Bahawalpur</b><small>Punjab</small></div><div class="city"><b>Multan</b><small>Punjab</small></div><div class="city"><b>Faisalabad</b><small>Punjab</small></div><div class="city"><b>Gujranwala</b><small>Punjab</small></div><div class="city"><b>Sargodha</b><small>Punjab</small></div><div class="city"><b>Karachi</b><small>Sindh</small></div><div class="city"><b>Hyderabad</b><small>Sindh</small></div><div class="city"><b>Sukkur</b><small>Sindh</small></div><div class="city"><b>Peshawar</b><small>KP</small></div><div class="city"><b>Abbottabad</b><small>KP</small></div><div class="city"><b>Quetta</b><small>Balochistan</small></div><div class="city"><b>Gilgit</b><small>GB</small></div><div class="city"><b>Skardu</b><small>GB</small></div><div class="city"><b>Muzaffarabad</b><small>AJK</small></div><div class="city"><b>Mirpur</b><small>AJK</small></div></div></section>
+</main>
+<footer class="footer"><div class="brand">Pak<span style="color:#69a0ff">Uni</span></div><p>Find where you belong.</p><small>Premium prototype — verify official admission information before applying.</small></footer>
+
+<script>
+let status="awaiting";
+const U=[
+["FAST-NUCES","Islamabad,Rawalpindi,Lahore,Karachi,Peshawar","cs,se,ai,ds,it,cyber,business",60,190000,"Computing-focused option.","yes"],
+["COMSATS University Islamabad","Islamabad,Lahore,Abbottabad","cs,se,ai,ds,it,cyber",60,170000,"Public university with multiple campuses.","yes"],
+["Quaid-i-Azam University","Islamabad","cs,ai,arts",60,90000,"Public university option in the capital.","yes"],
+["NUST","Islamabad,Rawalpindi","cs,se,ai,ds,it,eng,business",60,200000,"Highly competitive multidisciplinary option.","yes"],
+["Air University","Islamabad,Multan,Karachi,Kamra,Kharian","cs,se,ai,ds,it,cyber,business",55,170000,"Multicampus computing and multidisciplinary option.","yes"],
+["Bahria University","Islamabad,Karachi,Lahore","cs,se,ai,ds,it,business",50,180000,"Multicampus private-sector option.","yes"],
+["Riphah International University","Islamabad,Lahore","cs,se,ai,ds,it,cyber,business",50,180000,"Private-sector computing option.","yes"],
+["University of the Punjab","Lahore","cs,it,eng,business,arts",50,90000,"Large public university with broad choices.","varies"],
+["UET Lahore","Lahore","cs,se,it,eng",60,110000,"Major public engineering/computing option.","yes"],
+["UMT","Lahore","cs,se,ai,ds,it,cyber,business",50,220000,"Private computing and business option.","yes"],
+["IUB","Bahawalpur","cs,se,ai,ds,it,cyber,business,arts",50,80000,"Public university in South Punjab.","varies"],
+["BZU","Multan","cs,se,ai,ds,it,business,arts",50,85000,"Major public university in Multan.","varies"],
+["University of Sargodha","Sargodha","cs,se,ai,ds,it,business,arts",50,80000,"Public university with broad programs.","varies"],
+["National Textile University","Faisalabad","cs,it,eng,business",50,110000,"Technology-focused public university.","yes"],
+["University of Karachi","Karachi","cs,it,business,arts",50,90000,"Large public university in Karachi.","varies"],
+["NED University","Karachi","cs,se,ai,it,eng",60,120000,"Public engineering/computing university.","yes"],
+["IBA Karachi","Karachi","cs,business,arts",60,220000,"Business and computing option.","yes"],
+["Sukkur IBA University","Sukkur","cs,ai,ds,business,eng",50,90000,"Public computing/business option.","yes"],
+["University of Sindh","Hyderabad","cs,it,business,arts",50,80000,"Public university in Sindh.","varies"],
+["University of Peshawar","Peshawar","cs,it,business,arts",50,80000,"Major public university in KP.","varies"],
+["UET Peshawar","Peshawar","cs,se,it,eng",60,100000,"Public engineering/computing option.","yes"],
+["CECOS University","Peshawar","cs,se,ai,it,eng,business",50,140000,"Private technology-focused option.","yes"],
+["Hazara University","Abbottabad","cs,it,business,arts",50,75000,"Public-sector option in KP.","varies"],
+["University of Balochistan","Quetta","cs,it,business,arts",50,80000,"Public university in Quetta.","varies"],
+["BUITEMS","Quetta","cs,se,ai,ds,it,eng,business",50,110000,"Technology and engineering-focused option.","yes"],
+["University of Gwadar","Gwadar","business,arts,it",45,65000,"Public-sector option in Gwadar.","varies"],
+["University of Gilgit-Baltistan","Gilgit","cs,it,business,arts",45,70000,"Public university in Gilgit-Baltistan.","varies"],
+["University of Baltistan","Skardu","cs,it,business,arts",45,70000,"Public university in Skardu.","varies"],
+["University of Azad Jammu & Kashmir","Muzaffarabad","cs,it,business,arts",50,80000,"Public university in AJK.","varies"],
+["Mirpur University of Science & Technology","Mirpur","cs,se,ai,it,eng,business",50,90000,"Public technology/engineering option.","varies"]
+];
+
+function setStatus(x){
+status=x;
+document.getElementById("awaitChoice").classList.toggle("active",x==="awaiting");
+document.getElementById("finalChoice").classList.toggle("active",x==="final");
+document.getElementById("finalFields").style.display=x==="final"?"block":"none";
+document.getElementById("awaitMsg").style.display=x==="awaiting"?"block":"none";
+}
+setStatus("awaiting");
+
+function recommend(){
+const so=+document.getElementById("so").value,st=+document.getElementById("st").value,h1o=+document.getElementById("h1o").value,h1t=+document.getElementById("h1t").value;
+if(!so||!h1o||so>st||h1o>h1t){alert("Please enter valid SSC and HSSC Part-I marks.");return}
+const ssc=so/st*100,h1=h1o/h1t*100;
+let finalPct=null,agg=null;
+if(status==="final"){const hfo=+document.getElementById("hfo").value,hft=+document.getElementById("hft").value;if(!hfo||hfo>hft){alert("Please enter valid HSSC final marks.");return}finalPct=hfo/hft*100;agg=.3*ssc+.7*finalPct}
+else{finalPct=h1;agg=null}
+const f=field.value,c=city.value,b=+budget.value||Infinity,t=test.value,p=priority.value;
+let arr=U.map((u,idx)=>{let s=0,r=[];
+if(u[2].includes(f)){s+=30;r.push("Degree match")}else{s-=6}
+if(c==="any"||u[1].includes(c)){s+=22;r.push("City match")}
+if(finalPct>=u[3]){s+=25;r.push(status==="final"?"Final result fit":"Provisional marks fit")}else if(finalPct>=u[3]-5){s+=10;r.push("Close — verify merit")}else{s-=10}
+if(b>=u[4]){s+=12;r.push("Budget fit")}else if(b!==Infinity){s-=7}
+if(t==="any"||t===u[6]||u[6]==="varies")s+=5;
+if(p==="budget")s+=Math.max(0,10-u[4]/30000);
+if(p==="career"&&(u[0].includes("FAST")||u[0].includes("NUST")||u[0].includes("IBA")))s+=8;
+if(p==="location"&&c!=="any"&&u[1].includes(c))s+=8;
+if(p==="admission"&&u[6]==="varies")s+=5;
+return {...u,idx,s,r}}).filter(u=>finalPct>=u[3]-8).sort((a,b)=>b.s-a.s);
+
+document.getElementById("summary").innerHTML=status==="final"?`Your estimated 30/70 aggregate is <b>${agg.toFixed(2)}%</b> · SSC ${ssc.toFixed(2)}% · HSSC Final ${finalPct.toFixed(2)}%`:`You're awaiting Part-II, so we <b>didn't invent a final aggregate</b>. Your current HSSC Part-I percentage is <b>${h1.toFixed(2)}%</b>; results below are provisional.`;
+const out=document.getElementById("list");out.innerHTML="";
+arr.slice(0,8).forEach((u,i)=>out.innerHTML+=`<article class="result"><div class="rhead"><div><div class="rname">${i+1}. ${u[0]}</div><div class="sub">${u[1].split(",").slice(0,4).join(" · ")}</div><div>${u.r.map(x=>`<span class="badge">${x}</span>`).join("")}</div></div><div class="score">${Math.max(0,u.s)}</div></div><p class="muted">${u[5]}</p><div><b>${status==="final"?(finalPct>=u[3]?"Looks possible":"Check current merit"):"Provisional match — final eligibility depends on Part-II"}</b></div><div class="sub" style="margin-top:5px">Prototype fee estimate: PKR ${u[4].toLocaleString()}/semester · Test route: ${u[6]}</div><div class="actions"><button class="small" onclick="alert('Production version: open the verified university profile.')">View University</button><button class="small" onclick="alert('Production version: add this university to your shortlist.')">♡ Save</button></div></article>`);
+document.getElementById("results").style.display="block";document.getElementById("results").scrollIntoView({behavior:"smooth"});
+}
+</script>
+</body>
+</html>
